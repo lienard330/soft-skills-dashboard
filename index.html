@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soft Skills &amp; Employability Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+
+  <div class="hero">
+    <div class="hero-head">
+      <div>
+        <h1 class="serif">Soft Skills &amp; Employability — Analysis Dashboard</h1>
+        <p class="sub">Soft Skills as Predictors of Employability Classification · Implications for IT Graduates as AI Changes Entry-Level Work</p>
+      </div>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div class="team-chips">
+          <div class="avatar" title="Jovannie C. Mataganas"><img src="photos/mataganas.jpg" alt="Jovannie C. Mataganas"></div>
+          <div class="avatar" title="Jhon Clarence B. Rulona"><img src="photos/rulona.jpg" alt="Jhon Clarence B. Rulona"></div>
+          <div class="avatar" title="John Lienard C. Safuentes"><img src="photos/safuentes.jpg" alt="John Lienard C. Safuentes"></div>
+          <div class="avatar" title="Jesseca A. Rodrigo"><img src="photos/rodrigo.jpg" alt="Jesseca A. Rodrigo"></div>
+        </div>
+        <button class="export-btn" id="exportBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+          Export view
+        </button>
+      </div>
+    </div>
+    <nav class="tabs" id="tabsNav">
+      <button class="active" data-tab="overview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Overview</button>
+      <button data-tab="scores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>Soft-Skill Scores</button>
+      <button data-tab="split"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 9 9h-9z"/></svg>Classification Split</button>
+      <button data-tab="corr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h5v5"/></svg>Correlation</button>
+      <button data-tab="reg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg>Regression</button>
+    </nav>
+  </div>
+
+  <main id="captureArea">
+
+    <section class="panel active" id="overview">
+      <div class="panel-shell">
+        <div class="team-card">
+          <h3>Project &amp; Team</h3>
+          <div class="team-grid">
+            <div class="team-member"><div class="av"><img src="photos/mataganas.jpg" alt="Jovannie C. Mataganas"></div><div><div class="name">Jovannie C. Mataganas</div><div class="role">Group Leader / Project Coordinator</div></div></div>
+            <div class="team-member"><div class="av"><img src="photos/rulona.jpg" alt="Jhon Clarence B. Rulona"></div><div><div class="name">Jhon Clarence B. Rulona</div><div class="role">Literature Review Researcher</div></div></div>
+            <div class="team-member"><div class="av"><img src="photos/safuentes.jpg" alt="John Lienard C. Safuentes"></div><div><div class="name">John Lienard C. Safuentes</div><div class="role">Researcher / Data Analyst</div></div></div>
+            <div class="team-member"><div class="av"><img src="photos/rodrigo.jpg" alt="Jesseca A. Rodrigo"></div><div><div class="name">Jesseca A. Rodrigo</div><div class="role">Documentation &amp; Presentation Officer</div></div></div>
+          </div>
+          <div class="team-meta">
+            <div><b>Course:</b> BSIT 4B</div>
+            <div><b>Adviser:</b> Maria Lina Ero, BSIT Lecturer</div>
+            <div><b>Submitted:</b> September 29, 2026</div>
+          </div>
+        </div>
+
+        <div class="hero-stat-row">
+          <div class="hero-stat">
+            <div class="big" data-count="2982">0</div>
+            <div class="cap">Filipino university students in this dataset</div>
+          </div>
+          <div class="side-stats">
+            <div class="side-stat"><span class="lbl">Soft-skill factors rated</span><span class="num" data-count="7">0</span></div>
+            <div class="side-stat"><span class="lbl">Outcome classes</span><span class="num" data-count="2">0</span></div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c2530f" stroke-width="2" style="flex-shrink:0;margin-top:2px;"><path d="M13 2 3 14h8l-1 8 11-14h-8z"/></svg>
+          <div><b>Quick read:</b> Mental Alertness (r = .203) and Manner of Speaking (r = .198) show the strongest relationship with the Employable classification. All seven soft-skill factors are statistically significant at p &lt; .05, though every relationship is modest rather than strong — use the tabs above to see each analysis in full.</div>
+        </div>
+
+        <div class="overview-grid">
+          <div class="mini-card"><div class="mini-ic" style="background:var(--brand-tint)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 9 9h-9z"/></svg></div><div><h3>Employable</h3><div class="mini-val">1,729 students (58%)</div></div></div>
+          <div class="mini-card"><div class="mini-ic" style="background:var(--accent-tint)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 9 9h-9z" opacity=".35"/></svg></div><div><h3>Less Employable</h3><div class="mini-val">1,253 students (42%)</div></div></div>
+          <div class="mini-card"><div class="mini-ic" style="background:var(--accent2-tint)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg></div><div><h3>Top Predictor</h3><div class="mini-val">Mental Alertness</div></div></div>
+          <div class="mini-card"><div class="mini-ic" style="background:#e9f7e9"><svg viewBox="0 0 24 24" fill="none" stroke="var(--good)" stroke-width="2"><path d="M4 12l5 5 11-11"/></svg></div><div><h3>Model Accuracy</h3><div class="mini-val" style="color:var(--good)">60.1%</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="scores">
+      <div class="panel-shell">
+        <div class="card-head">
+          <div class="card-head-left"><div class="icon-badge" style="background:var(--brand-tint)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></div><h2>Average Score per Soft-Skill Factor</h2></div>
+          <div class="segmented" id="scoreMode">
+            <button class="active" data-mode="overall">Overall Average</button>
+            <button data-mode="compare">Employable vs Less Employable</button>
+          </div>
+        </div>
+        <p class="sub">Mean rating (1–5 scale) across all 2,982 students</p>
+        <p class="explain" id="scoresExplain">Each bar shows how students scored, on average, for one soft-skill factor. Higher bars mean evaluators rated students more favorably on that trait overall.</p>
+
+        <div id="overallBars">
+          <div class="bar-row" data-factor>
+            <div class="bar-icon" style="background:linear-gradient(135deg,#2a78d6,#4a93ea)"><svg viewBox="0 0 24 24" stroke="#fff"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+            <div class="bar-label">General Appearance</div><div class="bar-track"><div class="bar-fill" data-width="85.0" data-label="4.25" style="background:linear-gradient(90deg,#9cc0ee,#2a78d6)"></div></div>
+          </div>
+          <div class="bar-row" data-factor>
+            <div class="bar-icon" style="background:linear-gradient(135deg,#eb6834,#f3875a)"><svg viewBox="0 0 24 24" stroke="#fff"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.4 8.4 0 0 1-3.5-.9L3 21l1.9-5.6A8.4 8.4 0 1 1 21 11.5z"/></svg></div>
+            <div class="bar-label">Manner of Speaking</div><div class="bar-track"><div class="bar-fill" data-width="77.6" data-label="3.88" style="background:linear-gradient(90deg,#f3b393,#eb6834)"></div></div>
+          </div>
+          <div class="bar-row" data-factor>
+            <div class="bar-icon" style="background:linear-gradient(135deg,#e34948,#ea6f6e)"><svg viewBox="0 0 24 24" stroke="#fff"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <div class="bar-label">Physical Condition</div><div class="bar-track"><div class="bar-fill" data-width="79.4" data-label="3.97" style="background:linear-gradient(90deg,#f0a09f,#e34948)"></div></div>
+          </div>
+          <div class="bar-row" data-factor>
+            <div class="bar-icon" style="background:linear-gradient(135deg,#1baf7a,#49cf9d)"><svg viewBox="0 0 24 24" stroke="#fff"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg></div>
+            <div class="bar-label">Mental Alertness</div><div class="bar-track"><div class="bar-fill" data-width="79.2" data-label="3.96" style="background:linear-gradient(90deg,#8fe0c0,#1baf7a)"></div></div>
+          </div>
+          <div class="bar-row" data-factor>
+            <div class="bar-icon" style="background:linear-gradient(135deg,#eda100,#f2b733)"><svg viewBox="0 0 24 24" stroke="#fff"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21.1 7 14.2l-5-4.9 6.9-1L12 2z"/></svg></div>
+            <div class="bar-label">Self-Confidence</div><div class="bar-track"><div class="bar-fill" data-width="78.2" data-label="3.91" style="background:linear-gradient(90deg,#f6d184,#eda100)"></div></div>
+          </div>
+          <div class="bar-row" data-factor>
+            <div class="bar-icon" style="background:linear-gradient(135deg,#6250d6,#8b3fd4)"><svg viewBox="0 0 24 24" stroke="#fff"><path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h5v5"/></svg></div>
+            <div class="bar-label">Ability to Present Ideas</div><div class="bar-track"><div class="bar-fill" data-width="76.2" data-label="3.81" style="background:linear-gradient(90deg,#b3a6ea,#6250d6)"></div></div>
+          </div>
+          <div class="bar-row" data-factor>
+            <div class="bar-icon" style="background:linear-gradient(135deg,#e87ba4,#f2a4c3)"><svg viewBox="0 0 24 24" stroke="#fff"><circle cx="9" cy="10" r="3"/><circle cx="16" cy="10" r="3"/><path d="M4 20c0-3 2.5-5 5-5M20 20c0-3-2.5-5-5-5"/></svg></div>
+            <div class="bar-label">Communication Skills</div><div class="bar-track"><div class="bar-fill" data-width="70.4" data-label="3.52" style="background:linear-gradient(90deg,#f3c0d5,#e87ba4)"></div></div>
+          </div>
+        </div>
+
+        <div id="compareBars" style="display:none">
+          <div class="cmp-legend"><span><span class="sw" style="background:var(--brand)"></span>Employable</span><span><span class="sw" style="background:var(--accent)"></span>Less Employable</span></div>
+          <div class="bar-row" data-factor><div class="bar-label" style="width:188px">General Appearance</div><div class="cmp-track"><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="86.3" style="background:var(--brand)"></div></div><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="83.1" style="background:var(--accent)"></div></div></div><div class="pred-tag" style="width:100px">4.31 / 4.15</div></div>
+          <div class="bar-row" data-factor><div class="bar-label" style="width:188px">Manner of Speaking</div><div class="cmp-track"><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="80.2" style="background:var(--brand)"></div></div><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="74.2" style="background:var(--accent)"></div></div></div><div class="pred-tag" style="width:100px">4.01 / 3.71</div></div>
+          <div class="bar-row" data-factor><div class="bar-label" style="width:188px">Physical Condition</div><div class="cmp-track"><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="81.5" style="background:var(--brand)"></div></div><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="76.6" style="background:var(--accent)"></div></div></div><div class="pred-tag" style="width:100px">4.08 / 3.83</div></div>
+          <div class="bar-row" data-factor><div class="bar-label" style="width:188px">Mental Alertness</div><div class="cmp-track"><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="82.0" style="background:var(--brand)"></div></div><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="75.5" style="background:var(--accent)"></div></div></div><div class="pred-tag" style="width:100px">4.10 / 3.78</div></div>
+          <div class="bar-row" data-factor><div class="bar-label" style="width:188px">Self-Confidence</div><div class="cmp-track"><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="80.2" style="background:var(--brand)"></div></div><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="75.5" style="background:var(--accent)"></div></div></div><div class="pred-tag" style="width:100px">4.01 / 3.78</div></div>
+          <div class="bar-row" data-factor><div class="bar-label" style="width:188px">Ability to Present Ideas</div><div class="cmp-track"><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="77.8" style="background:var(--brand)"></div></div><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="74.2" style="background:var(--accent)"></div></div></div><div class="pred-tag" style="width:100px">3.89 / 3.71</div></div>
+          <div class="bar-row" data-factor><div class="bar-label" style="width:188px">Communication Skills</div><div class="cmp-track"><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="72.2" style="background:var(--brand)"></div></div><div class="cmp-bar-track"><div class="cmp-bar-fill" data-width="68.2" style="background:var(--accent)"></div></div></div><div class="pred-tag" style="width:100px">3.61 / 3.41</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="split">
+      <div class="panel-shell">
+        <div class="card-head"><div class="card-head-left"><div class="icon-badge" style="background:var(--brand-tint)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 9 9h-9z"/></svg></div><h2>Employability Classification Split</h2></div></div>
+        <p class="sub">2,982 students total</p>
+        <p class="explain">This shows how many students were rated Employable versus Less Employable based on their mock-interview performance — this is an evaluator rating, not a confirmed hiring outcome.</p>
+        <div class="donut-wrap">
+          <svg id="donutSvg" width="200" height="200" viewBox="0 0 160 160" style="opacity:0; transform:scale(.85); transition:opacity .6s var(--ease), transform .6s var(--spring); filter: drop-shadow(0 16px 24px rgba(98,80,214,0.18));">
+            <defs>
+              <linearGradient id="gradBlue" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#8b3fd4"/><stop offset="100%" stop-color="#6250d6"/>
+              </linearGradient>
+              <linearGradient id="gradOrange" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f3875a"/><stop offset="100%" stop-color="#eb6834"/>
+              </linearGradient>
+            </defs>
+            <circle cx="80" cy="80" r="60" fill="none" stroke="#f3f1f8" stroke-width="24"/>
+            <circle cx="80" cy="80" r="60" fill="none" stroke="url(#gradBlue)" stroke-width="24" stroke-linecap="round"
+                    stroke-dasharray="218.6 377" stroke-dashoffset="0" transform="rotate(-90 80 80)"/>
+            <circle cx="80" cy="80" r="60" fill="none" stroke="url(#gradOrange)" stroke-width="24" stroke-linecap="round"
+                    stroke-dasharray="158.4 377" stroke-dashoffset="-218.6" transform="rotate(-90 80 80)"/>
+            <text x="80" y="76" text-anchor="middle" font-size="27" font-weight="700" font-family="'Libre Baskerville', serif" fill="var(--ink)">58%</text>
+            <text x="80" y="96" text-anchor="middle" font-size="11" fill="var(--ink-muted)">Employable</text>
+          </svg>
+          <div>
+            <div class="legend-item"><span class="swatch" style="background:linear-gradient(135deg,#8b3fd4,#6250d6)"></span>Employable <span class="legend-num" data-count="1729">0</span></div>
+            <div class="legend-item"><span class="swatch" style="background:linear-gradient(135deg,#f3875a,#eb6834)"></span>Less Employable <span class="legend-num" data-count="1253">0</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="corr">
+      <div class="panel-shell">
+        <div class="card-head"><div class="card-head-left"><div class="icon-badge" style="background:var(--brand-tint)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2"><path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h5v5"/></svg></div><h2>Correlation with Employability</h2></div></div>
+        <p class="sub">Point-biserial r, ranked strongest to weakest — all seven are significant at p &lt; .05</p>
+        <p class="explain">A value closer to 1 means that soft-skill factor moves together with the Employable classification more strongly. Every factor here is statistically significant, but the relationships are modest, not strong — no single rating scale item determines the classification on its own.</p>
+        <div class="bar-row" data-factor><div class="bar-label">Mental Alertness</div><div class="bar-track"><div class="bar-fill" data-width="100.0" data-label=".203" style="background:linear-gradient(90deg,#b3a6ea,#6250d6)"></div></div></div>
+        <div class="bar-row" data-factor><div class="bar-label">Manner of Speaking</div><div class="bar-track"><div class="bar-fill" data-width="97.5" data-label=".198" style="background:linear-gradient(90deg,#bcb0ea,#6e5ce0)"></div></div></div>
+        <div class="bar-row" data-factor><div class="bar-label">Physical Condition</div><div class="bar-track"><div class="bar-fill" data-width="81.3" data-label=".165" style="background:linear-gradient(90deg,#c6bbec,#7b6ae4)"></div></div></div>
+        <div class="bar-row" data-factor><div class="bar-label">Self-Confidence</div><div class="bar-track"><div class="bar-fill" data-width="70.0" data-label=".142" style="background:linear-gradient(90deg,#d0c6ee,#8879e8)"></div></div></div>
+        <div class="bar-row" data-factor><div class="bar-label">Communication Skills</div><div class="bar-track"><div class="bar-fill" data-width="65.5" data-label=".133" style="background:linear-gradient(90deg,#dad2f0,#9589ea)"></div></div></div>
+        <div class="bar-row" data-factor><div class="bar-label">Ability to Present Ideas</div><div class="bar-track"><div class="bar-fill" data-width="57.6" data-label=".117" style="background:linear-gradient(90deg,#e3deef,#a399ec)"></div></div></div>
+        <div class="bar-row" data-factor><div class="bar-label">General Appearance</div><div class="bar-track"><div class="bar-fill" data-width="57.1" data-label=".116" style="background:linear-gradient(90deg,#ece9f2,#b1a8ee)"></div></div></div>
+      </div>
+    </section>
+
+    <section class="panel" id="reg">
+      <div class="panel-shell">
+        <div class="card-head"><div class="card-head-left"><div class="icon-badge" style="background:var(--brand-tint)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div><h2>Logistic Regression Result</h2></div></div>
+        <p class="sub">Best-performing combination of predictors</p>
+        <p class="explain">The model combines all seven soft-skill ratings to classify each student, trained on 80% of the data and tested on the remaining 597 students it had not seen. Accuracy is how often the model's prediction matched the actual label.</p>
+
+        <div class="reg-hero">
+          <div class="reg-ring-wrap">
+            <svg width="170" height="170" viewBox="0 0 160 160" style="filter: drop-shadow(0 14px 20px rgba(12,163,12,0.18));">
+              <defs><linearGradient id="gradGood" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3fc23f"/><stop offset="100%" stop-color="#0ca30c"/></linearGradient></defs>
+              <circle cx="80" cy="80" r="64" fill="none" stroke="#eef7ee" stroke-width="16"/>
+              <circle id="regRing" cx="80" cy="80" r="64" fill="none" stroke="url(#gradGood)" stroke-width="16" stroke-linecap="round"
+                      stroke-dasharray="402" stroke-dashoffset="402" transform="rotate(-90 80 80)" data-target="242"/>
+            </svg>
+            <div class="big"><div class="num" data-count="60" data-suffix=".1%">0%</div><div class="cap">Test-set accuracy</div></div>
+          </div>
+          <div style="flex:1; min-width:280px; font-size:14px; color:var(--ink-soft); line-height:1.6;">
+            60.1% is well above the 50% chance baseline for a two-class problem, though lower than the 90%+ accuracy reported in prior machine-learning studies on this same dataset. Those studies used tuned ensemble models (Random Forest, SVM, gradient boosting); this study deliberately uses a single transparent logistic regression instead, to explain <i>which</i> soft skills relate to employability rather than to maximize raw prediction accuracy.
+          </div>
+        </div>
+
+        <div class="div-legend">
+          <span><span class="sw" style="background:var(--brand)"></span>Increases odds of "Employable"</span>
+          <span><span class="sw" style="background:var(--accent)"></span>Net negative once overlap with other factors is accounted for</span>
+        </div>
+
+        <div class="div-row" data-factor>
+          <div class="div-label">Manner of Speaking</div>
+          <div class="div-track"><div class="div-half neg"><div class="div-fill" data-width="0"></div></div><div class="div-center"></div><div class="div-half pos"><div class="div-fill" data-width="100.0"></div></div></div>
+          <div class="div-value" style="color:var(--brand)">+0.52</div>
+        </div>
+        <div class="div-row" data-factor>
+          <div class="div-label">Mental Alertness</div>
+          <div class="div-track"><div class="div-half neg"><div class="div-fill" data-width="0"></div></div><div class="div-center"></div><div class="div-half pos"><div class="div-fill" data-width="86.1"></div></div></div>
+          <div class="div-value" style="color:var(--brand)">+0.45</div>
+        </div>
+        <div class="div-row" data-factor>
+          <div class="div-label">Ability to Present Ideas</div>
+          <div class="div-track"><div class="div-half neg"><div class="div-fill" data-width="78.2"></div></div><div class="div-center"></div><div class="div-half pos"><div class="div-fill" data-width="0"></div></div></div>
+          <div class="div-value" style="color:var(--accent)">&minus;0.41</div>
+        </div>
+        <div class="div-row" data-factor>
+          <div class="div-label">Physical Condition</div>
+          <div class="div-track"><div class="div-half neg"><div class="div-fill" data-width="0"></div></div><div class="div-center"></div><div class="div-half pos"><div class="div-fill" data-width="30.9"></div></div></div>
+          <div class="div-value" style="color:var(--brand)">+0.16</div>
+        </div>
+        <div class="div-row" data-factor>
+          <div class="div-label">Self-Confidence</div>
+          <div class="div-track"><div class="div-half neg"><div class="div-fill" data-width="9.0"></div></div><div class="div-center"></div><div class="div-half pos"><div class="div-fill" data-width="0"></div></div></div>
+          <div class="div-value" style="color:var(--accent)">&minus;0.05</div>
+        </div>
+        <div class="div-row" data-factor>
+          <div class="div-label">Communication Skills</div>
+          <div class="div-track"><div class="div-half neg"><div class="div-fill" data-width="8.4"></div></div><div class="div-center"></div><div class="div-half pos"><div class="div-fill" data-width="0"></div></div></div>
+          <div class="div-value" style="color:var(--accent)">&minus;0.04</div>
+        </div>
+        <div class="div-row" data-factor>
+          <div class="div-label">General Appearance</div>
+          <div class="div-track"><div class="div-half neg"><div class="div-fill" data-width="0"></div></div><div class="div-center"></div><div class="div-half pos"><div class="div-fill" data-width="3.2"></div></div></div>
+          <div class="div-value" style="color:var(--brand)">+0.02</div>
+        </div>
+
+        <div class="div-note"><b>Why some bars point the "wrong" way:</b> the seven soft-skill ratings are highly correlated with one another (e.g. Manner of Speaking and Ability to Present Ideas correlate at r = .73). Once the model accounts for that overlap, a factor's own weight can come out negative even though it correlates positively with employability on its own — that's a known statistical side-effect of correlated predictors (multicollinearity), not an error. The Correlation tab shows each factor's individual relationship on its own terms.</div>
+      </div>
+    </section>
+
+  </main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
